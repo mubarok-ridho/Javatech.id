@@ -1,240 +1,161 @@
-import React, { useState, useEffect } from 'react';
+// src/components/sections/Services.jsx
+import React from 'react';
 import { motion } from 'framer-motion';
-import { ChevronRight, Star, Clock, Users, Target } from 'lucide-react';
-import axios from 'axios';
+import { useInView } from 'react-intersection-observer';
+import { Code, Globe, Cpu, Wifi, Smartphone, Database, Cloud, Shield } from 'lucide-react';
 
-const Services = () => {
-  const [services, setServices] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [activeService, setActiveService] = useState(0);
-
-  useEffect(() => {
-    const fetchServices = async () => {
-      try {
-        // Simulate API call
-        setTimeout(() => {
-          setServices([
-            {
-              id: 1,
-              icon: "📱",
-              title: "Mobile App Development",
-              description: "Pengembangan aplikasi mobile native dan cross-platform dengan performa optimal dan UX terbaik.",
-              features: ["iOS & Android Native", "React Native/Flutter", "Offline Capability", "Push Notification", "App Store Deployment"],
-              color: "from-purple-500 to-blue-500",
-              stats: { projects: 45, satisfaction: 98, duration: "4-8 weeks" }
-            },
-            {
-              id: 2,
-              icon: "🌐",
-              title: "Web Development",
-              description: "Pembuatan website dan aplikasi web modern dengan teknologi terdepan dan arsitektur scalable.",
-              features: ["React/Next.js/Vue", "Node.js/Golang", "Microservices", "Cloud Deployment", "PWA Support"],
-              color: "from-green-500 to-teal-500",
-              stats: { projects: 67, satisfaction: 96, duration: "2-6 weeks" }
-            },
-            {
-              id: 3,
-              icon: "🤖",
-              title: "AI Development",
-              description: "Solusi kecerdasan buatan dan machine learning untuk automasi dan optimasi proses bisnis.",
-              features: ["Computer Vision", "Natural Language Processing", "Predictive Analytics", "Custom AI Models", "MLOps"],
-              color: "from-orange-500 to-red-500",
-              stats: { projects: 23, satisfaction: 95, duration: "8-16 weeks" }
-            },
-            {
-              id: 4,
-              icon: "🔌",
-              title: "IoT Development",
-              description: "Integrasi hardware dan software IoT untuk smart solutions dan real-time monitoring.",
-              features: ["Sensor Networks", "Real-time Dashboard", "Edge Computing", "Predictive Maintenance", "Hardware Design"],
-              color: "from-blue-500 to-cyan-500",
-              stats: { projects: 34, satisfaction: 97, duration: "12-20 weeks" }
-            },
-            {
-              id: 5,
-              icon: "☁️",
-              title: "Cloud Solutions",
-              description: "Infrastructure cloud dan DevOps untuk skalabilitas dan keandalan sistem.",
-              features: ["AWS/Azure/GCP", "Kubernetes & Docker", "CI/CD Pipeline", "Monitoring & Logging", "Disaster Recovery"],
-              color: "from-indigo-500 to-purple-500",
-              stats: { projects: 28, satisfaction: 99, duration: "2-4 weeks" }
-            },
-            {
-              id: 6,
-              icon: "🛡️",
-              title: "Cybersecurity",
-              description: "Proteksi sistem dan data dengan solusi keamanan berlapis dan monitoring 24/7.",
-              features: ["Penetration Testing", "Security Audit", "Threat Detection", "Compliance", "Incident Response"],
-              color: "from-red-500 to-pink-500",
-              stats: { projects: 19, satisfaction: 100, duration: "1-3 weeks" }
-            }
-          ]);
-          setLoading(false);
-        }, 1000);
-      } catch (error) {
-        console.error('Error fetching services:', error);
-        setLoading(false);
-      }
-    };
-
-    fetchServices();
-  }, []);
-
-  if (loading) {
-    return (
-      <section id="services" className="py-20 bg-white dark:bg-gray-900">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center">
-            <div className="animate-pulse text-lg text-gray-600 dark:text-gray-400">
-              Memuat layanan...
-            </div>
-          </div>
-        </div>
-      </section>
-    );
-  }
+const ServiceCard = ({ service, index }) => {
+  const [ref, inView] = useInView({
+    threshold: 0.3,
+    triggerOnce: true
+  });
 
   return (
-    <section id="services" className="py-20 bg-gray-50 dark:bg-gray-800/50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 50 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.6, delay: index * 0.1 }}
+      whileHover={{ y: -10, scale: 1.02 }}
+      className="group relative"
+    >
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-cyan-500/10 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+      
+      <div className="relative bg-white/80 dark:bg-gray-800/80 backdrop-blur-xl rounded-3xl p-8 border-2 border-white/50 dark:border-gray-700/50 shadow-2xl hover:shadow-3xl transition-all duration-300 h-full">
+        {/* Icon */}
+        <div className={`w-20 h-20 bg-gradient-to-br ${service.gradient} rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
+          <service.icon className="w-10 h-10 text-white" />
+        </div>
+
+        {/* Content */}
+        <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4">
+          {service.title}
+        </h3>
+        
+        <p className="text-gray-600 dark:text-gray-300 leading-relaxed mb-6">
+          {service.description}
+        </p>
+
+        {/* Features */}
+        <div className="space-y-3">
+          {service.features.map((feature, idx) => (
+            <div key={idx} className="flex items-center text-gray-700 dark:text-gray-300">
+              <div className="w-2 h-2 bg-blue-500 rounded-full mr-3"></div>
+              <span className="text-sm font-medium">{feature}</span>
+            </div>
+          ))}
+        </div>
+
+        {/* Hover Border */}
+        <div className="absolute inset-0 rounded-3xl border-2 border-transparent group-hover:border-blue-500/20 transition-all duration-300"></div>
+      </div>
+    </motion.div>
+  );
+};
+
+const Services = () => {
+  const services = [
+    {
+      icon: Smartphone,
+      title: "Mobile App Development",
+      description: "Native and cross-platform mobile applications with exceptional user experience and performance optimization for iOS and Android platforms.",
+      features: ["iOS & Android Native", "React Native & Flutter", "UI/UX Design", "App Store Optimization", "Performance Tuning"],
+      gradient: "from-blue-500 to-cyan-500"
+    },
+    {
+      icon: Globe,
+      title: "Web Development", 
+      description: "Modern web applications with cutting-edge technologies, scalability, and security built-in for enterprise-level performance.",
+      features: ["React.js & Next.js", "Progressive Web Apps", "Real-time Features", "SEO Optimization", "Cloud Deployment"],
+      gradient: "from-green-500 to-emerald-500"
+    },
+    {
+      icon: Cpu,
+      title: "AI Development",
+      description: "Intelligent solutions powered by machine learning and artificial intelligence for business automation and data insights.",
+      features: ["Machine Learning", "Computer Vision", "Natural Language Processing", "Predictive Analytics", "AI Integration"],
+      gradient: "from-purple-500 to-pink-500"
+    },
+    {
+      icon: Wifi,
+      title: "IoT Development",
+      description: "Connected device solutions with hardware integration and real-time data processing capabilities for smart environments.",
+      features: ["Smart Sensors", "Real-time Monitoring", "Cloud Integration", "Mobile Control", "Data Analytics"],
+      gradient: "from-orange-500 to-red-500"
+    }
+  ];
+
+  return (
+    <section id="services" className="relative py-32 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute top-0 left-0 w-72 h-72 bg-blue-500/5 rounded-full blur-3xl"></div>
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl"></div>
+      
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Enhanced Section Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center mb-20"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-white mb-6">
-            Layanan <span className="text-transparent bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text">Unggulan</span>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="inline-flex items-center px-6 py-3 rounded-2xl bg-white/80 dark:bg-gray-800/80 backdrop-blur-md border border-blue-200 dark:border-blue-800 shadow-lg mb-8"
+          >
+            <Code className="w-5 h-5 text-blue-500 mr-2" />
+            <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">Our Expertise</span>
+          </motion.div>
+
+          <h2 className="text-5xl md:text-7xl font-black text-gray-900 dark:text-white mb-6">
+            Our <span className="bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">Services</span>
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto leading-relaxed">
-            Solusi teknologi end-to-end dari konsep hingga implementasi, didukung oleh tim expert 
-            dan teknologi terdepan untuk kesuksesan digital bisnis Anda.
-          </p>
+          
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-4xl mx-auto leading-relaxed"
+          >
+            Comprehensive technology solutions <span className="font-semibold text-blue-600 dark:text-blue-400">tailored</span> to drive your business forward 
+            in the <span className="font-semibold text-cyan-600 dark:text-cyan-400">digital era</span>.
+          </motion.p>
         </motion.div>
 
-        <div className="grid lg:grid-cols-2 gap-12 items-start">
-          {/* Services List */}
-          <div className="space-y-4">
-            {services.map((service, index) => (
-              <motion.div
-                key={service.id}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className={`p-6 rounded-2xl cursor-pointer transition-all duration-300 ${
-                  activeService === index
-                    ? 'bg-white dark:bg-gray-800 shadow-2xl border-2 border-blue-500/20 transform scale-105'
-                    : 'bg-white/50 dark:bg-gray-800/50 hover:bg-white dark:hover:bg-gray-800 shadow-lg hover:shadow-xl border-2 border-transparent hover:border-gray-200 dark:hover:border-gray-700'
-                }`}
-                onClick={() => setActiveService(index)}
-              >
-                <div className="flex items-start space-x-4">
-                  <div className={`w-16 h-16 bg-gradient-to-br ${service.color} rounded-2xl flex items-center justify-center text-2xl shadow-lg`}>
-                    {service.icon}
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
-                      {service.title}
-                    </h3>
-                    <p className="text-gray-600 dark:text-gray-400 mb-4">
-                      {service.description}
-                    </p>
-                    <div className="flex items-center space-x-4 text-sm text-gray-500 dark:text-gray-400">
-                      <div className="flex items-center space-x-1">
-                        <Target size={16} />
-                        <span>{service.stats.projects} projects</span>
-                      </div>
-                      <div className="flex items-center space-x-1">
-                        <Star size={16} className="text-yellow-500" />
-                        <span>{service.stats.satisfaction}%</span>
-                      </div>
-                      <div className="flex items-center space-x-1">
-                        <Clock size={16} />
-                        <span>{service.stats.duration}</span>
-                      </div>
-                    </div>
-                  </div>
-                  <ChevronRight 
-                    size={20} 
-                    className={`text-gray-400 transition-transform duration-300 ${
-                      activeService === index ? 'rotate-90 text-blue-600' : ''
-                    }`}
-                  />
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Service Details */}
-          <motion.div
-            key={activeService}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="sticky top-24"
-          >
-            {services[activeService] && (
-              <div className="bg-white dark:bg-gray-800 rounded-3xl shadow-2xl border border-gray-200 dark:border-gray-700 overflow-hidden">
-                <div className={`h-4 bg-gradient-to-r ${services[activeService].color}`}></div>
-                <div className="p-8">
-                  <div className="flex items-center space-x-3 mb-6">
-                    <div className={`w-12 h-12 bg-gradient-to-br ${services[activeService].color} rounded-xl flex items-center justify-center text-xl`}>
-                      {services[activeService].icon}
-                    </div>
-                    <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
-                      {services[activeService].title}
-                    </h3>
-                  </div>
-                  
-                  <p className="text-gray-600 dark:text-gray-400 text-lg mb-8 leading-relaxed">
-                    {services[activeService].description}
-                  </p>
-
-                  <div className="mb-8">
-                    <h4 className="text-lg font-semibold text-gray-900 dark:text-white mb-4">
-                      Fitur Utama
-                    </h4>
-                    <div className="grid gap-3">
-                      {services[activeService].features.map((feature, index) => (
-                        <div key={index} className="flex items-center space-x-3">
-                          <div className={`w-2 h-2 bg-gradient-to-r ${services[activeService].color} rounded-full`}></div>
-                          <span className="text-gray-700 dark:text-gray-300">{feature}</span>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Stats */}
-                  <div className="grid grid-cols-3 gap-4 p-6 bg-gray-50 dark:bg-gray-700/50 rounded-2xl">
-                    <div className="text-center">
-                      <div className="text-2xl font-bold text-gray-900 dark:text-white">
-                        {services[activeService].stats.projects}+
-                      </div>
-                      <div className="text-sm text-gray-600 dark:text-gray-400">Projects</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-2xl font-bold text-gray-900 dark:text-white">
-                        {services[activeService].stats.satisfaction}%
-                      </div>
-                      <div className="text-sm text-gray-600 dark:text-gray-400">Satisfaction</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="text-2xl font-bold text-gray-900 dark:text-white">
-                        {services[activeService].stats.duration}
-                      </div>
-                      <div className="text-sm text-gray-600 dark:text-gray-400">Duration</div>
-                    </div>
-                  </div>
-
-                  <button className="w-full mt-6 bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white py-4 rounded-xl font-semibold transition-all duration-300 transform hover:-translate-y-0.5 shadow-lg hover:shadow-xl">
-                    Konsultasi Gratis
-                  </button>
-                </div>
-              </div>
-            )}
-          </motion.div>
+        {/* Enhanced Services Grid */}
+        <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-8">
+          {services.map((service, index) => (
+            <ServiceCard key={index} service={service} index={index} />
+          ))}
         </div>
+
+        {/* Enhanced CTA Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          viewport={{ once: true }}
+          className="text-center mt-20"
+        >
+          <div className="glass-card rounded-3xl p-12 max-w-4xl mx-auto border-2 border-blue-200/50 dark:border-blue-800/50">
+            <h3 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+              Ready to Transform Your Business?
+            </h3>
+            <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
+              Let's discuss how our technology solutions can drive your business growth and innovation.
+            </p>
+            <motion.button
+              whileHover={{ scale: 1.05, y: -2 }}
+              whileTap={{ scale: 0.95 }}
+              className="bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 text-white px-12 py-4 rounded-2xl font-bold text-lg transition-all duration-300 shadow-2xl shadow-blue-500/25"
+            >
+              Discuss Your Project
+            </motion.button>
+          </div>
+        </motion.div>
       </div>
     </section>
   );
