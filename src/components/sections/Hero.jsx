@@ -179,7 +179,7 @@ const SuperHero = () => {
             className="space-y-8"
           >
 
-            <div style={{ height: '1px' }} />
+            <div style={{ height: '20px' }} />
             <div className="h-0.1" />
             {/* Badge */}
             <motion.div

@@ -18,7 +18,7 @@ const ChromeDinoAnimation = () => {
       GRAVITY: 0.6,
       JUMP_VELOCITY: 8,
       MAX_JUMP_HEIGHT: 7,
-      RUN_SPEED: 1,   // Animasi lari lebih cepat
+      RUN_SPEED: 2,   // Animasi lari lebih cepat
     },
     BUILDING: {
       MIN_WIDTH: 25,
@@ -33,7 +33,7 @@ const ChromeDinoAnimation = () => {
       HEIGHT: 15,
       SPEED: 1,
     },
-    SPEED: 4,
+    SPEED: 5,
     GROUND_HEIGHT: 20,
     SKYLINE_HEIGHT: 100,
   };
