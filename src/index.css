@@ -250,3 +250,85 @@ body {
               color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
               box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
 }
+
+/* ========== LIGHT THEME ENHANCEMENT ========== */
+.light .hero-gradient {
+  background: linear-gradient(135deg, 
+    rgba(255, 255, 255, 0.95) 0%,
+    rgba(224, 247, 255, 0.8) 25%,
+    rgba(240, 237, 255, 0.7) 50%,
+    rgba(255, 240, 245, 0.6) 100%) !important;
+}
+
+/* Glass Effects - Light Theme Enhanced */
+.light .glass-card {
+  background: rgba(255, 255, 255, 0.92) !important;
+  backdrop-filter: blur(25px);
+  border: 1px solid rgba(255, 255, 255, 0.9) !important;
+  box-shadow: 
+    0 20px 40px rgba(103, 232, 249, 0.1),
+    0 8px 20px rgba(139, 92, 246, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95) !important;
+}
+
+/* Custom Gradient Colors untuk Light Theme */
+.light .bg-gradient-cyan {
+  background: linear-gradient(135deg, #06b6d4 0%, #22d3ee 100%) !important;
+}
+
+.light .bg-gradient-purple {
+  background: linear-gradient(135deg, #8b5cf6 0%, #a78bfa 100%) !important;
+}
+
+.light .bg-gradient-cyber {
+  background: linear-gradient(135deg, #06b6d4 0%, #8b5cf6 50%, #ec4899 100%) !important;
+}
+
+/* Text Colors - Light Theme Enhanced */
+.light .text-navy {
+  color: #0f172a !important;
+}
+
+.light .text-navy-light {
+  color: #1e293b !important;
+}
+
+.light .text-gradient {
+  background: linear-gradient(135deg, #0891b2 0%, #7c3aed 50%, #ec4899 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  -webkit-text-fill-color: transparent !important;
+}
+
+/* Button Styles - Light Theme */
+.light .btn-primary {
+  background: linear-gradient(135deg, #06b6d4 0%, #8b5cf6 100%) !important;
+  color: white !important;
+  box-shadow: 0 8px 25px rgba(6, 182, 212, 0.3) !important;
+}
+
+.light .btn-primary:hover {
+  background: linear-gradient(135deg, #0891b2 0%, #7c3aed 100%) !important;
+  box-shadow: 0 12px 30px rgba(6, 182, 212, 0.4) !important;
+}
+
+/* Border Colors - Light Theme */
+.light .border-cyber {
+  border-color: rgba(6, 182, 212, 0.3) !important;
+}
+
+.light .border-purple-light {
+  border-color: rgba(139, 92, 246, 0.2) !important;
+}
+
+/* Shadows - Light Theme */
+.light .shadow-cyber {
+  box-shadow: 0 10px 30px rgba(6, 182, 212, 0.15) !important;
+}
+
+.light .shadow-purple {
+  box-shadow: 0 10px 30px rgba(139, 92, 246, 0.15) !important;
+}
+
+/* ========== DARK THEME (keep existing) ========== */
+/* [Keep all your existing dark theme CSS] */

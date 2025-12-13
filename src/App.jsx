@@ -4,7 +4,7 @@ import Hero from "./components/sections/Hero";
 import Services from "./components/sections/Services";
 import Stats from "./components/sections/Stats";
 import Projects from "./components/sections/Projects";
-import Team from "./components/sections/Team";
+// import Team from "./components/sections/Team";
 import Contact from "./components/sections/Contact";
 import Footer from "./components/sections/Footer";
 
@@ -17,7 +17,7 @@ function App() {
         <Services />
         <Stats />
         <Projects />
-        <Team />
+        {/* <Team /> */}
         <Contact />
       </main>
       <Footer />
