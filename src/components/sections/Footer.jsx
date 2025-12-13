@@ -33,7 +33,7 @@ const Footer = () => {
               />
               
               <p className="text-gray-400 text-base leading-relaxed max-w-md">
-                Perusahaan teknologi terdepan dalam penyedia solusi software dan hardware IoT 
+                Perusahaan teknologi startup dalam penyedia solusi software dan hardware IoT 
                 untuk transformasi digital bisnis di Indonesia.
               </p>
             </div>

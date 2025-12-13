@@ -2,7 +2,7 @@
 import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { Code, Globe, Cpu, Wifi, Smartphone, ArrowRight, Sparkles, Film, Palette, Video, Mic, Camera, Zap } from 'lucide-react';
+import { Code, Globe, Cpu, Wifi, Smartphone, ArrowRight, Sparkles, Film, Palette, Video, Mic, Camera, Zap, BrainCircuitIcon, BrainCircuit, Brain, WifiCogIcon, LucideGlobe, SmartphoneIcon } from 'lucide-react';
 
 // Chrome Dino Animation Component - EXACT REPLICA
 const ChromeDinoAnimation = () => {
@@ -830,34 +830,34 @@ const ServiceCard = ({ service, index }) => {
 const Services = () => {
   const services = [
     {
-      icon: Smartphone,
+      icon: SmartphoneIcon,
       title: "Mobile App Development",
       description: "Native and cross-platform mobile applications with exceptional user experience and performance optimization.",
-      features: ["iOS & Android", "Flutter Based", "Free Customize UI/UX Design", "Free Unlimited Revision", "Goals to appstore & playstore"],
+      features: ["iOS & Android", "Flutter Based", "Free Customize UI/UX Design", "Free Unlimited Revision", "Deploy to appstore & playstore"],
       gradient: "from-blue-500 to-cyan-500",
       gradientColors: ["#3b82f6", "#06b6d4"],
       iconBorderColor: "#3b82f6"
     },
     {
-      icon: Globe,
+      icon: LucideGlobe,
       title: "Web Development",
       description: "Modern web applications with cutting-edge technologies, scalability, and security built-in for enterprise-level performance, static or even dynamic.",
-      features: ["Javascript Framework-based", "Free Request Responsive UI/UX", "Free 6 Month Maintenance", "Real-time Features"],
+      features: ["Javascript Framework-based", "Free Request Responsive UI/UX", "Free 3x Maintenance", "Real-time Features"],
       gradient: "from-purple-500 to-pink-500",
       gradientColors: ["#8b5cf6", "#ec4899"],
       iconBorderColor: "#8b5cf6"
     },
     {
-      icon: Cpu,
+      icon: Brain,
       title: "AI Development",
       description: "Intelligent solutions powered by machine learning and artificial intelligence for business automation and data insights.",
-      features: ["Handling ML, NLP, and Computer Vision", "Free Customize Your AI Needed", "Free 6 Months Maintenance", "Integrate AI Anywhere"],
+      features: ["Handling ML, NLP, and Computer Vision", "Free Customize Your AI Needed", "Free 3x Maintenance", "Integrate AI Anywhere"],
       gradient: "from-emerald-500 to-teal-500",
       gradientColors: ["#10b981", "#14b8a6"],
       iconBorderColor: "#10b981"
     },
     {
-      icon: Wifi,
+      icon: WifiCogIcon,
       title: "IoT Development",
       description: "Connected device solutions with hardware integration and real-time data processing capabilities for smart environments.",
       features: ["Smart Sensors-Actuators", "Real-time Monitoring", "Cloud Integration", "Mobile and Web Control"],
