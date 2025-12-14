@@ -3,12 +3,12 @@ import { motion } from 'framer-motion';
 import { Code, Wifi, Smartphone, Globe, Zap, Eye, Volume2, Droplets, Calendar, ArrowRight, Sparkles, Palette, Video, Camera, Mic } from 'lucide-react';
 
 // Import gambar langsung
-import tpqImage from 'D:/Javatech/src/assets/TPQ.png';
-import miImage from 'D:/Javatech/src/assets/MI.png';
-import faImage from 'D:/Javatech/src/assets/FA.png';
-import faiexpressImage from 'D:/Javatech/src/assets/FaiExpress.png';
-import claireImage from 'D:/Javatech/src/assets/CLAIRE.png';
-import amiflowImage from 'D:/Javatech/src/assets/Amiflow.png';
+// import tpqImage from 'D:/Javatech/src/assets/TPQ.png';
+// import miImage from 'D:/Javatech/src/assets/MI.png';
+// import faImage from 'D:/Javatech/src/assets/FA.png';
+// import faiexpressImage from 'D:/Javatech/src/assets/FaiExpress.png';
+// import claireImage from 'D:/Javatech/src/assets/CLAIRE.png';
+// import amiflowImage from 'D:/Javatech/src/assets/Amiflow.png';
 
 const ProjectCard = ({ project, index }) => {
   const getStatusColor = (status) => {
@@ -176,7 +176,7 @@ const Projects = () => {
       type: "website",
       status: "Deployed",
       color: "#3b82f6",
-      image: tpqImage,
+      image: "https://res.cloudinary.com/doafwrddd/image/upload/v1765690293/TPQ_rdfrwn.png",
       description: "Website management sistem untuk TPQ dengan fitur pembayaran, manajemen siswa, laporan keuangan, dan komunikasi orang tua wali.",
       tech: ["React", "Node.js", "Firebase", "Laravel"],
       features: [
@@ -195,7 +195,7 @@ const Projects = () => {
       type: "website",
       status: "Deployed",
       color: "#10b981",
-      image: miImage,
+      image: "https://res.cloudinary.com/doafwrddd/image/upload/v1765690293/MI_jk5xno.png",
       description: "Portal manajemen peserta didik dan pembayaran SPP terintegrasi untuk Madrasah Ibtidaiyah.",
       tech: ["React", "Node.js", "MongoDB", "Express"],
       features: [
@@ -214,7 +214,8 @@ const Projects = () => {
       type: "dashboard",
       status: "Deployed",
       color: "#8b5cf6",
-      image: faImage,
+      // image: faImage,
+      image: "https://res.cloudinary.com/doafwrddd/image/upload/v1765690292/FA_h5tebx.png",
       description: "Sistem presensi digital untuk asisten praktikum dengan tracking real-time dan reporting otomatis.",
       tech: ["React", "Python", "PostgreSQL", "FastAPI"],
       features: [
@@ -233,7 +234,8 @@ const Projects = () => {
       type: "mobile",
       status: "Play Store",
       color: "#f59e0b",
-      image: faiexpressImage,
+      // image: faiexpressImage,
+      image: "https://res.cloudinary.com/doafwrddd/image/upload/v1765690293/FaiExpress_lb9v2x.png",
       description: "Aplikasi mobile pengantaran ekspedisi untuk digitalisasi layanan logistik di Pulau Burung.",
       tech: ["Flutter", "Firebase", "Google Maps API"],
       features: [
@@ -252,7 +254,7 @@ const Projects = () => {
       type: "ai",
       status: "Development",
       color: "#ec4899",
-      image: claireImage,
+      image: "https://res.cloudinary.com/doafwrddd/image/upload/v1765690292/CLAIRE_xm154s.png",
       description: "Sistem pemantauan kelas dengan AI NLP dan voice recognition untuk evaluasi pembelajaran berbasis audio.",
       tech: ["Python", "TensorFlow", "IoT", "React"],
       features: [
@@ -271,7 +273,7 @@ const Projects = () => {
       type: "iot",
       status: "Development",
       color: "#06b6d4",
-      image: amiflowImage,
+      image: "https://res.cloudinary.com/doafwrddd/image/upload/v1765690292/Amiflow_o7yrwr.png",
       description: "Sistem IoT untuk manajemen pengaliran air oleh Pamsimas dengan monitoring real-time dan kontrol otomatis.",
       tech: ["IoT", "ESP32", "React", "Node.js"],
       features: [

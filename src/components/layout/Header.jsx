@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, ChevronRight, Sparkle, Home, Settings, Rocket, User } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import LogoLandscape from '../../assets/Logo_Landscape.png';
-import LogoOnly from '../../assets/Logo_only.png';
-import FreePalestine from '../../assets/FreePalestine.png';
+// import LogoLandscape from '../../assets/Logo_Landscape.png';
+// import LogoOnly from '../../assets/Logo_only.png';
+// import FreePalestine from '../../assets/FreePalestine.png';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -125,12 +125,12 @@ const Header = () => {
 
                   {/* Logo utama */}
                   <img
-                    src={LogoLandscape}
+                    src={"https://res.cloudinary.com/doafwrddd/image/upload/v1765690292/Logo_Landscape_nvory3.png"}
                     alt="Javatech"
                     className="h-10 w-auto hidden lg:block relative transform transition-transform duration-300 group-hover:scale-105"
                   />
                   <img
-                    src={LogoOnly}
+                    src={"https://res.cloudinary.com/doafwrddd/image/upload/v1765690292/Logo_only_igq8dw.png"}
                     alt="Javatech"
                     className="h-10 w-auto lg:hidden relative transform transition-transform duration-300 group-hover:scale-105"
                   />
@@ -296,7 +296,7 @@ const Header = () => {
                   <div className="flex items-center gap-3 relative z-10">
                     {/* Palestine Flag */}
                     <motion.img
-                      src={FreePalestine}
+                      src={"https://res.cloudinary.com/doafwrddd/image/upload/v1765690292/FreePalestine_rfn3ci.png"}
                       alt="Free Palestine"
                       className="h-12 w-auto"
                       animate={{

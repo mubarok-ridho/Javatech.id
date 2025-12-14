@@ -1,6 +1,6 @@
 import React from 'react';
 import { Mail, Phone, MapPin, ChevronRight } from 'lucide-react';
-import LogoLandscape from '../../assets/WhiteJavatech.png';
+// import LogoLandscape from '../../assets/WhiteJavatech.png';
 
 const Footer = () => {
   const contactInfo = {
@@ -27,7 +27,7 @@ const Footer = () => {
             <div className="flex flex-col items-start space-y-6">
               {/* Logo - Diperbesar */}
               <img 
-                src={LogoLandscape} 
+                src={"https://res.cloudinary.com/doafwrddd/image/upload/v1765690293/WhiteJavatech_r6cluw.png"} 
                 alt="Javatech" 
                 className="h-16 w-auto mb-2"  // Diperbesar dari h-10 menjadi h-16
               />
