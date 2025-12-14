@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, ChevronRight, Sparkle, Home, Settings, Rocket, User } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-// import LogoLandscape from '../../assets/Logo_Landscape.png';
-// import LogoOnly from '../../assets/Logo_only.png';
-// import FreePalestine from '../../assets/FreePalestine.png';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -28,7 +25,6 @@ const Header = () => {
       setIsMenuOpen(false);
     }
   };
-
 
   // Navigation dengan Aksara Jawa dan English label
   const navigation = [
@@ -58,6 +54,11 @@ const Header = () => {
     },
   ];
 
+  // URL gambar dari Cloudinary
+  const logoLandscapeUrl = "https://res.cloudinary.com/doafwrddd/image/upload/v1765690292/Logo_Landscape_nvory3.png";
+  const logoOnlyUrl = "https://res.cloudinary.com/doafwrddd/image/upload/v1765690292/Logo_only_igq8dw.png";
+  const freePalestineUrl = "https://res.cloudinary.com/doafwrddd/image/upload/v1765690292/FreePalestine_rfn3ci.png";
+
   return (
     <motion.header
       initial={{ y: -100 }}
@@ -68,9 +69,6 @@ const Header = () => {
           : 'bg-gradient-to-b from-gray-900 via-gray-900/90 to-transparent'
         }`}
     >
-      <div style={{ height: '15px' }} />
-      <div className="h-0.1" />
-
       {/* Animated top border */}
       <motion.div
         className="absolute top-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-gold-500 to-transparent"
@@ -125,12 +123,12 @@ const Header = () => {
 
                   {/* Logo utama */}
                   <img
-                    src={"https://res.cloudinary.com/doafwrddd/image/upload/v1765690292/Logo_Landscape_nvory3.png"}
+                    src={logoLandscapeUrl}
                     alt="Javatech"
                     className="h-10 w-auto hidden lg:block relative transform transition-transform duration-300 group-hover:scale-105"
                   />
                   <img
-                    src={"https://res.cloudinary.com/doafwrddd/image/upload/v1765690292/Logo_only_igq8dw.png"}
+                    src={logoOnlyUrl}
                     alt="Javatech"
                     className="h-10 w-auto lg:hidden relative transform transition-transform duration-300 group-hover:scale-105"
                   />
@@ -296,9 +294,9 @@ const Header = () => {
                   <div className="flex items-center gap-3 relative z-10">
                     {/* Palestine Flag */}
                     <motion.img
-                      src={"https://res.cloudinary.com/doafwrddd/image/upload/v1765690292/FreePalestine_rfn3ci.png"}
+                      src={freePalestineUrl}
                       alt="Free Palestine"
-                      className="h-12 w-auto"
+                      className="h-10 w-auto"
                       animate={{
                         rotate: [0, 5, 0, -5, 0],
                       }}
@@ -382,7 +380,7 @@ const Header = () => {
           </div>
         </nav>
 
-        {/* Interactive Mobile Navigation - Updated Layout too */}
+        {/* Interactive Mobile Navigation */}
         <AnimatePresence>
           {isMenuOpen && (
             <motion.div
@@ -392,7 +390,7 @@ const Header = () => {
               className="lg:hidden overflow-hidden bg-gradient-to-b from-gray-900 to-gray-950 border-t border-gray-800/40"
             >
               <div className="pt-6 pb-8 px-6">
-                {/* Navigation Items - Updated layout for mobile too */}
+                {/* Navigation Items */}
                 <div className="space-y-3">
                   {navigation.map((item, index) => (
                     <motion.button
@@ -417,7 +415,7 @@ const Header = () => {
                       />
 
                       <div className="flex items-center gap-4 relative z-10 w-full">
-                        {/* Icon - Bigger for mobile too */}
+                        {/* Icon */}
                         <motion.div
                           className="text-gray-400 group-hover:text-gold-400 transition-colors flex-shrink-0"
                           animate={{ scale: [1, 1.2, 1] }}
@@ -426,7 +424,7 @@ const Header = () => {
                           {item.icon}
                         </motion.div>
 
-                        {/* Text Container - Aligned beside icon */}
+                        {/* Text Container */}
                         <div className="flex flex-col items-start flex-grow">
                           {/* Aksara Jawa dengan warna emas */}
                           <div className="text-xl font-bold text-gold-600 group-hover:text-gold-400 transition-colors font-noto-javanese leading-tight">
@@ -469,7 +467,7 @@ const Header = () => {
 
                   <div className="flex items-center justify-center gap-4 relative z-10">
                     <motion.img
-                      src={FreePalestine}
+                      src={freePalestineUrl}
                       alt="Free Palestine"
                       className="h-12 w-auto"
                       animate={{
@@ -520,7 +518,6 @@ const Header = () => {
           )}
         </AnimatePresence>
       </div>
-      
 
       {/* CSS untuk font Javanese dan warna emas */}
       <style jsx>{`
@@ -531,7 +528,7 @@ const Header = () => {
           font-weight: 700;
         }
         
-        /* Warna emas custom dengan Tailwind-like classes */
+        /* Warna emas custom */
         .text-gold-300 { color: #f6e05e; }
         .text-gold-400 { color: #ecc94b; }
         .text-gold-500 { color: #d69e2e; }
