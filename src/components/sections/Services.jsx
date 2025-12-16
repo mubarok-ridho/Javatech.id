@@ -31,9 +31,9 @@ const ChromeDinoAnimation = () => {
     CLOUD: {
       WIDTH: 30,
       HEIGHT: 15,
-      SPEED: 1,
+      SPEED: 3,
     },
-    SPEED: 5,
+    SPEED: 7,
     GROUND_HEIGHT: 20,
     SKYLINE_HEIGHT: 100,
   };

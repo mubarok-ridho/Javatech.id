@@ -1,7 +1,7 @@
 // src/components/SuperHero.jsx
 import React, { useEffect, useRef } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Play, Star, Zap } from 'lucide-react';
+import { ArrowRight, Play, Star, Zap, Sparkles, Rocket, Wallet } from 'lucide-react';
 
 const SuperHero = () => {
   const canvasRef = useRef(null);
@@ -121,10 +121,10 @@ const SuperHero = () => {
     };
   }, []);
 
-  // DATA UNTUK DARK MODE
+  // DATA UNTUK DARK MODE - Mengganti emoticon dengan SVG
   const features = [
     {
-      icon: '✨',
+      icon: <Sparkles className="w-6 h-6 text-white" />,
       title: 'Build with AI integration',
       description: 'Bebas merancang kebutuhan ai bisnis anda',
       gradient: 'from-purple-400 to-pink-400',
@@ -133,7 +133,7 @@ const SuperHero = () => {
       textColor: 'text-purple-200'
     },
     {
-      icon: '🚀',
+      icon: <Rocket className="w-6 h-6 text-white" />,
       title: 'Free 3 month maintenance',
       description: 'Demi mensupport perkembangan teknologi di indonesia',
       gradient: 'from-blue-400 to-cyan-400',
@@ -142,18 +142,18 @@ const SuperHero = () => {
       textColor: 'text-blue-200'
     },
     {
-      icon: '💸',
+      icon: <Wallet className="w-6 h-6 text-white" />,
       title: 'Affordable for Startups',
       description: 'Kualitas proffesional dengan harga yang sangat ramah',
       gradient: 'from-cyan-400 to-green-400',
       bg: 'bg-gradient-to-br from-cyan-900/30 to-emerald-900/20',
-      iconBg: 'bg-gradient-to-br from-cyan-500 to-blue-500',
+      iconBg: 'bg-gradient-to-br from-cyan-500 to-blue-200',
       textColor: 'text-cyan-200'
     }
   ];
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-16 md:pt-0">
       {/* Canvas Particles */}
       <canvas
         ref={canvasRef}
@@ -161,26 +161,23 @@ const SuperHero = () => {
       />
 
       {/* BACKGROUND GRADIENT */}
-      {/* <div className="absolute inset-0 bg-gradient-to-br from-blue-950 via-gray-950/85 to-purple-950/85" /> */}
-      <div className="absolute inset-0 light:bg-gradient-to-br light:from-white light:via-sky-150 light:to-blue-150 dark:bg-gradient-to-br dark:from-gray-950/90 dark:via-blue-950/90 dark:to-cyan-950/75" />
-      {/* GLOW EFFECTS */}
-      <div className="absolute top-1/4 -left-20 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-gray-900/40 rounded-full blur-3xl" />
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-950 via-gray-950/85 to-purple-950/85" />
+      
+      {/* GLOW EFFECTS - Responsive */}
+      <div className="absolute top-1/4 -left-20 w-64 h-64 md:w-96 md:h-96 bg-purple-500/10 rounded-full blur-3xl" />
+      <div className="absolute bottom-1/4 -right-20 w-64 h-64 md:w-96 md:h-96 bg-gray-900/40 rounded-full blur-3xl" />
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-20">
+        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
 
           {/* Text Content - SIDE KIRI */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="space-y-8"
+            className="space-y-6 md:space-y-8"
           >
-
-            <div style={{ height: '20px' }} />
-            <div className="h-0.1" />
             {/* Badge */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -188,19 +185,18 @@ const SuperHero = () => {
               transition={{ delay: 0.2 }}
               className="inline-flex items-center px-4 py-2 rounded-full bg-gradient-to-r from-purple-900/30 to-blue-900/30 border border-purple-700/30 shadow-md shadow-purple-900/20"
             >
-
               <Star className="w-4 h-4 text-purple-400 mr-2" />
               <span className="text-sm font-semibold text-purple-200">
                 Leading Tech Solution Provider
               </span>
             </motion.div>
 
-            {/* Main Heading */}
+            {/* Main Heading - Responsive */}
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3 }}
-              className="text-5xl md:text-7xl font-bold leading-tight"
+              className="text-4xl md:text-5xl lg:text-7xl font-bold leading-tight"
             >
               <span className="text-white">Transform Your</span>
               <span className="block bg-gradient-to-r from-cyan-300 via-blue-400 to-purple-400 bg-clip-text text-transparent">
@@ -209,24 +205,24 @@ const SuperHero = () => {
               <span className="text-white">Into Reality</span>
             </motion.h1>
 
-            {/* Description */}
+            {/* Description - Responsive */}
             <motion.p
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4 }}
-              className="text-xl leading-relaxed text-gray-300"
+              className="text-lg md:text-xl leading-relaxed text-gray-300"
             >
               Javatech menghadirkan solusi software dan hardware(IoT)
               yang mendorong inovasi dan pertumbuhan bisnis.
               Kami mengubah tantangan kompleks menjadi pengalaman digital yang elegan.
             </motion.p>
 
-            {/* CTA Buttons */}
+            {/* CTA Buttons - Responsive */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
-              className="flex flex-col sm:flex-row gap-4"
+              className="flex flex-col sm:flex-row gap-3 md:gap-4"
             >
               {/* Primary Button */}
               <motion.button
@@ -241,14 +237,14 @@ const SuperHero = () => {
                     });
                   }
                 }}
-                className="group relative px-8 py-4 rounded-xl font-semibold flex items-center justify-center space-x-3 transition-all duration-300 overflow-hidden bg-gradient-to-r from-purple-600 to-blue-700 shadow-lg shadow-purple-500/30 cursor-pointer"
+                className="group relative px-6 md:px-8 py-3 md:py-4 rounded-xl font-semibold flex items-center justify-center space-x-2 md:space-x-3 transition-all duration-300 overflow-hidden bg-gradient-to-r from-purple-600 to-blue-700 shadow-lg shadow-purple-500/30 cursor-pointer"
               >
-                <span className="relative z-10 text-white">Start Your Project</span>
-                <ArrowRight className="w-5 h-5 relative z-10 text-white group-hover:translate-x-1 transition-transform" />
+                <span className="relative z-10 text-white text-sm md:text-base">Start Your Project</span>
+                <ArrowRight className="w-4 h-4 md:w-5 md:h-5 relative z-10 text-white group-hover:translate-x-1 transition-transform" />
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity bg-gradient-to-r from-purple-700 to-blue-800" />
               </motion.button>
 
-              {/* Secondary Button - Goes to Services */}
+              {/* Secondary Button */}
               <motion.button
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
@@ -261,19 +257,19 @@ const SuperHero = () => {
                     });
                   }
                 }}
-                className="group px-8 py-4 rounded-xl font-semibold flex items-center justify-center space-x-3 transition-all duration-300 bg-gray-800/90 border border-gray-700 shadow-md shadow-gray-900 hover:bg-gray-800 cursor-pointer"
+                className="group px-6 md:px-8 py-3 md:py-4 rounded-xl font-semibold flex items-center justify-center space-x-2 md:space-x-3 transition-all duration-300 bg-gray-800/90 border border-gray-700 shadow-md shadow-gray-900 hover:bg-gray-800 cursor-pointer"
               >
-                <Play className="w-5 h-5 text-blue-400" />
-                <span className="text-gray-200 font-semibold">Our Services</span>
+                <Play className="w-4 h-4 md:w-5 md:h-5 text-blue-400" />
+                <span className="text-gray-200 font-semibold text-sm md:text-base">Our Services</span>
               </motion.button>
             </motion.div>
 
-            {/* Stats */}
+            {/* Stats - Responsive */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6 }}
-              className="grid grid-cols-3 gap-8 pt-8"
+              className="grid grid-cols-3 gap-4 md:gap-8 pt-6 md:pt-8"
             >
               {[
                 { number: '22+', label: 'Projects Delivered' },
@@ -281,10 +277,10 @@ const SuperHero = () => {
                 { number: '30+', label: 'Happy Clients' },
               ].map((stat, index) => (
                 <div key={index} className="text-center">
-                  <div className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-cyan-300 to-blue-400 bg-clip-text text-transparent">
+                  <div className="text-xl md:text-2xl lg:text-3xl font-bold bg-gradient-to-r from-cyan-300 to-blue-400 bg-clip-text text-transparent">
                     {stat.number}
                   </div>
-                  <div className="text-sm mt-1 font-medium text-gray-400">
+                  <div className="text-xs md:text-sm mt-1 font-medium text-gray-400">
                     {stat.label}
                   </div>
                 </div>
@@ -297,17 +293,17 @@ const SuperHero = () => {
             initial={{ opacity: 0, x: 50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
-            className="relative"
+            className="relative mt-8 lg:mt-0"
           >
-            {/* Enhanced Main Card */}
+            {/* Enhanced Main Card - Responsive */}
             <motion.div
               whileHover={{
                 y: -10,
                 transition: { type: "spring", stiffness: 300, damping: 20 }
               }}
-              className="relative rounded-3xl p-8 bg-gradient-to-br from-gray-900/80 to-gray-900/60 
-    backdrop-blur-xl border border-gray-800/50 overflow-hidden
-    shadow-2xl shadow-purple-900/10 hover:shadow-2xl hover:shadow-purple-900/20"
+              className="relative rounded-2xl md:rounded-3xl p-4 md:p-6 lg:p-8 bg-gradient-to-br from-gray-900/80 to-gray-900/60 
+                backdrop-blur-xl border border-gray-800/50 overflow-hidden
+                shadow-2xl shadow-purple-900/10 hover:shadow-2xl hover:shadow-purple-900/20"
             >
               {/* Animated background gradient */}
               <motion.div
@@ -332,8 +328,8 @@ const SuperHero = () => {
                 }} />
               </div>
 
-              <div className="relative space-y-6">
-                {/* Enhanced Feature Cards */}
+              <div className="relative space-y-4 md:space-y-6">
+                {/* Enhanced Feature Cards - Responsive */}
                 {features.map((feature, index) => (
                   <motion.div
                     key={index}
@@ -347,10 +343,10 @@ const SuperHero = () => {
                       delay: 0.8 + index * 0.1,
                       duration: 0.4
                     }}
-                    className={`group relative p-5 rounded-2xl ${feature.bg} 
-          border border-gray-800/50 backdrop-blur-sm
-          transition-all duration-300 hover:border-purple-500/30
-          hover:shadow-lg hover:shadow-purple-900/20`}
+                    className={`group relative p-3 md:p-4 lg:p-5 rounded-xl md:rounded-2xl ${feature.bg} 
+                      border border-gray-800/50 backdrop-blur-sm
+                      transition-all duration-300 hover:border-purple-500/30
+                      hover:shadow-lg hover:shadow-purple-900/20`}
                   >
                     {/* Hover shine effect */}
                     <motion.div
@@ -360,17 +356,17 @@ const SuperHero = () => {
                       transition={{ duration: 0.3 }}
                     />
 
-                    <div className="flex items-center space-x-4">
+                    <div className="flex items-center space-x-3 md:space-x-4">
                       {/* Animated Icon */}
                       <motion.div
-                        className={`relative w-12 h-12 rounded-xl flex items-center justify-center 
-              ${feature.iconBg} shadow-lg group-hover:shadow-xl`}
+                        className={`relative w-10 h-10 md:w-12 md:h-12 rounded-lg md:rounded-xl flex items-center justify-center 
+                          ${feature.iconBg} shadow-lg group-hover:shadow-xl flex-shrink-0`}
                         whileHover={{ rotate: 360 }}
                         transition={{ duration: 0.6, ease: "easeInOut" }}
                       >
                         {/* Icon pulse */}
                         <motion.div
-                          className="absolute -inset-1 rounded-xl border border-purple-400/30"
+                          className="absolute -inset-1 rounded-lg md:rounded-xl border border-purple-400/30"
                           animate={{
                             scale: [1, 1.2, 1],
                             opacity: [0, 0.5, 0],
@@ -381,19 +377,19 @@ const SuperHero = () => {
                             delay: index * 0.3,
                           }}
                         />
-                        <span className="text-2xl text-white relative z-10">
+                        <div className="text-white relative z-10 flex items-center justify-center">
                           {feature.icon}
-                        </span>
+                        </div>
                       </motion.div>
 
-                      <div>
+                      <div className="flex-1 min-w-0">
                         <motion.h3
-                          className={`font-bold bg-gradient-to-r ${feature.gradient} bg-clip-text text-transparent
-                group-hover:scale-105 origin-left transition-transform`}
+                          className={`font-bold text-sm md:text-base bg-gradient-to-r ${feature.gradient} bg-clip-text text-transparent
+                            group-hover:scale-105 origin-left transition-transform truncate md:truncate-none`}
                         >
                           {feature.title}
                         </motion.h3>
-                        <p className={`text-sm mt-1 ${feature.textColor}`}>
+                        <p className={`text-xs md:text-sm mt-1 ${feature.textColor} line-clamp-2 md:line-clamp-none`}>
                           {feature.description}
                         </p>
                       </div>
@@ -403,10 +399,10 @@ const SuperHero = () => {
               </div>
             </motion.div>
 
-            {/* Enhanced Floating Element 1 */}
+            {/* Enhanced Floating Element 1 - Responsive */}
             <motion.div
               animate={{
-                y: [0, -20, 0],
+                y: [0, -15, 0],
                 rotate: [0, 5, 0],
                 scale: [1, 1.05, 1]
               }}
@@ -415,11 +411,11 @@ const SuperHero = () => {
                 repeat: Infinity,
                 ease: "easeInOut"
               }}
-              className="absolute -top-4 -right-4 w-24 h-24 rounded-2xl 
-    backdrop-blur-sm border-2 border-blue-500/30 
-    shadow-2xl shadow-blue-500/20
-    bg-gradient-to-br from-blue-500/15 via-purple-500/10 to-blue-500/15
-    overflow-hidden"
+              className="absolute -top-2 -right-2 md:-top-4 md:-right-4 w-16 h-16 md:w-24 md:h-24 rounded-xl md:rounded-2xl 
+                backdrop-blur-sm border-2 border-blue-500/30 
+                shadow-xl md:shadow-2xl shadow-blue-500/20
+                bg-gradient-to-br from-blue-500/15 via-purple-500/10 to-blue-500/15
+                overflow-hidden"
             >
               {/* Inner animation */}
               <motion.div
@@ -436,10 +432,10 @@ const SuperHero = () => {
               />
             </motion.div>
 
-            {/* Enhanced Floating Element 2 */}
+            {/* Enhanced Floating Element 2 - Responsive */}
             <motion.div
               animate={{
-                y: [0, 15, 0],
+                y: [0, 10, 0],
                 rotate: [0, -5, 0],
                 scale: [1, 1.05, 1]
               }}
@@ -449,11 +445,11 @@ const SuperHero = () => {
                 ease: "easeInOut",
                 delay: 1
               }}
-              className="absolute -bottom-4 -left-4 w-20 h-20 rounded-2xl 
-    backdrop-blur-sm border-2 border-pink-500/30
-    shadow-2xl shadow-pink-500/20
-    bg-gradient-to-br from-pink-500/15 via-cyan-500/10 to-pink-500/15
-    overflow-hidden"
+              className="absolute -bottom-2 -left-2 md:-bottom-4 md:-left-4 w-14 h-14 md:w-20 md:h-20 rounded-xl md:rounded-2xl 
+                backdrop-blur-sm border-2 border-pink-500/30
+                shadow-xl md:shadow-2xl shadow-pink-500/20
+                bg-gradient-to-br from-pink-500/15 via-cyan-500/10 to-pink-500/15
+                overflow-hidden"
             >
               {/* Inner animation */}
               <motion.div
@@ -474,22 +470,22 @@ const SuperHero = () => {
         </div>
       </div>
 
-      {/* Scroll Indicator */}
+      {/* Scroll Indicator - Responsive */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 1 }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
+        className="absolute bottom-6 md:bottom-8 left-1/2 transform -translate-x-1/2"
       >
         <motion.div
-          animate={{ y: [0, 10, 0] }}
+          animate={{ y: [0, 8, 0] }}
           transition={{ duration: 2, repeat: Infinity }}
-          className="w-6 h-10 rounded-full flex justify-center backdrop-blur-sm border-2 border-purple-500/50"
+          className="w-5 h-8 md:w-6 md:h-10 rounded-full flex justify-center backdrop-blur-sm border-2 border-purple-500/50"
         >
           <motion.div
-            animate={{ y: [0, 12, 0] }}
+            animate={{ y: [0, 8, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
-            className="w-1 h-3 rounded-full mt-2 bg-gradient-to-b from-purple-400 to-blue-600"
+            className="w-1 h-2 md:h-3 rounded-full mt-2 bg-gradient-to-b from-purple-400 to-blue-600"
           />
         </motion.div>
       </motion.div>
